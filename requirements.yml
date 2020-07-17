@@ -1,4 +1,10 @@
-- src: geerlingguy.repo-epel
-- src: weareinteractive.nginx
-- src: geerlingguy.nginx
-- src: joshualund.golang
+---
+roles:
+  - name: geerlingguy.repo-epel
+    version: 1.3.0
+  - name: weareinteractive.nginx
+    version: 2.0.1
+  - name: geerlingguy.nginx
+    version: 2.7.0
+  - name: joshualund.golang
+    version: master
