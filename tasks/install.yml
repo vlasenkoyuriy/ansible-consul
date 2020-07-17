@@ -6,22 +6,24 @@
   when: ansible_os_family == "Debian"
 
 - name: install deps (Ubuntu)
-  apt: >
-    pkg={{item}}
-    state=installed
-  with_items:
-    - unzip
-    - jq
+  apt:
+    pkg: ['unzip', 'jq', 'iproute']
+    state: installed
+  retries: 3
+  delay: 10
   when: ansible_os_family == "Debian"
 
 - name: install deps (RHEL)
-  yum: >
-    pkg={{item}}
-    state=installed
-  with_items:
-    - unzip
-    - jq
+  yum:
+    pkg: ['unzip', 'jq', 'iproute']
+    state: installed
+    update_cache: true
+  retries: 3
+  delay: 10
   when: ansible_os_family == "RedHat"
+
+- name: update facts after iproute installing
+  gather_facts:
 
 - name: check archive stat
   stat: path={{ consul_download_folder }}/{{ consul_archive }}

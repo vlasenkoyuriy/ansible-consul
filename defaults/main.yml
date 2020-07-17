@@ -33,6 +33,7 @@ consul_config_file_mode: 0644
 consul_log_file: /var/log/consul
 consul_data_dir: "{{ consul_home }}/data"
 
+consul_address_dns: "127.0.0.1"
 consul_dns_config: false
 consul_dns_allow_stale: false
 consul_dns_max_stale: 5s
