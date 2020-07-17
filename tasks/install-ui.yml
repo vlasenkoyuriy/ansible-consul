@@ -25,7 +25,7 @@
     src={{ consul_download_folder }}/{{ consul_ui_archive }}
     dest={{ consul_ui_dir }}
     copy=no
-  when: consul_ui_was_downloaded|changed
+  when: consul_ui_was_downloaded.changed
 
 - name: set ownership
   file: >
@@ -34,7 +34,7 @@
     owner={{consul_user}}
     group={{consul_group}}
     recurse=yes
-  when: consul_ui_was_downloaded|changed
+  when: consul_ui_was_downloaded.changed
 
 - name: consul nginx config
   template: >
